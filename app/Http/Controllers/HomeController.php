@@ -32,9 +32,10 @@ class HomeController extends Controller
 
     public function index()
     {
+        // $datas['bumdes'] = Bumdes::getByUser();
+        // $datas['jual'] = Jual::getByUser()->count();
         $datas['pengurus'] = Pengurus::getByBumdes();
         $datas['unit'] = Unit::getByUser();
-        $datas['jual'] = Jual::getByUser()->count();
         $datas['sumModal'] = Modal::sumModal();
         $datas['sumHasil'] = Hasil::sumHasil();
         return view('user.home', compact('datas'));
@@ -153,9 +154,9 @@ class HomeController extends Controller
 
     public function unitView()
     {
-        $check = Bumdes::checkBumdes();
-        $data = Unit::getByUser();
-        return view('user.unit', ['data' => $data, 'check' => $check]);
+        $datas['check'] = Bumdes::checkBumdes();
+        $datas['unit'] = Unit::getByUser();
+        return view('user.unit', ['datas' => $datas]);
     }
 
     public function unitCreate(Request $request)
@@ -240,23 +241,24 @@ class HomeController extends Controller
     public function jualView()
     {
         $check = Jual::checkJual();
-        $unit = Unit::getAllUnit();
+        $bumdes = Bumdes::getByUser();
+        $unit = Bumdes::join('units', 'id_bumdes', '=', 'bumdes.id')->get();
         if ($check == false) {
             $check = Unit::checkUnit();
             $data = null;
-            return view('user.jual', ['data' => $data, 'check' => $check, 'unit' => $unit]);
+            return view('user.jual', ['data' => $data, 'check' => $check, 'unit' => $unit, 'bumdes' => $bumdes]);
         } elseif ($check == true) {
             $check = Unit::checkUnit();
-            $data = Jual::getByUser();
-            // dd($data);
-            return view('user.jual', ['data' => $data, 'check' => $check, 'unit' => $unit]);
+            $data = Unit::join('juals', 'id_unit', '=', 'units.id')->get();
+            return view('user.jual', ['data' => $data, 'check' => $check, 'unit' => $unit, 'bumdes' => $bumdes]);
         }
     }
 
     public function jualCreate(Request $request)
     {
         $this->validate($request, [
-            'file' => 'required'
+            'file' => 'required',
+            'file' => 'max:2048'
         ]);
         $file = $request->file('file');
         $folder_upload = 'images/jual';
@@ -281,7 +283,8 @@ class HomeController extends Controller
     public function jualUpdate(Request $request)
     {
         $this->validate($request, [
-            'file' => 'required'
+            'file' => 'required',
+            'file' => 'max:2048'
         ]);
 
         $file = $request->file('file');

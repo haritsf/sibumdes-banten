@@ -33,8 +33,6 @@
     <script src="{{asset('js/jquery.sharrre.js')}}"></script>
     <script src="{{asset('js/extras-dashboard.js')}}"></script>
     <script src="{{asset('js/shards-dashboard.js')}}"></script>
-    {{-- <script src="{{asset('js/app-overview.js')}}"></script> --}}
-    {{-- <script src="{{asset('js/app-blog-overview.js')}}"></script> --}}
     <script src="{{asset('js/datatables.js')}}"></script>
     <script>
         $(document).ready(function() {

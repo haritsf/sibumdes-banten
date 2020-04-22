@@ -75,7 +75,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg col-md col-sm-6 mb-4">
+        {{-- <div class="col-lg col-md col-sm-6 mb-4">
             <div class="stats-small stats-small--1 card card-small">
                 <div class="card-body p-0 d-flex">
                     <div class="d-flex flex-column m-auto">
@@ -86,7 +86,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 @endsection

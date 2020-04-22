@@ -38,8 +38,7 @@ class Jual extends Model
     public static function getByUser()
     {
         $getBumdes = Bumdes::where('id_user', '=', Auth::user()->id)->first();
-        $getUnit = Unit::where('id_bumdes', '=', $getBumdes->id)->first();
-        // dd($getUnit->toArray());
+        $getUnit = Unit::where('id_bumdes', '=', @$getBumdes->id)->first();
         return Jual::where('id_unit', '=', $getUnit['id'])->get();
     }
 }

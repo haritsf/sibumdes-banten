@@ -16,7 +16,7 @@ class JualSeeder extends Seeder
             [
                 'id_unit' => 1,
                 'produk' => "Jasa Maket",
-                'foto' => null,
+                'foto' => "1-maket.jpg",
                 'harga' => 1000000,
                 'lokasi' => "Dusun Krajan",
                 'telp' => "021123456789",

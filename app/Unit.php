@@ -34,7 +34,7 @@ class Unit extends Model
         return Unit::where('id_bumdes', '=', $getBumdes['id'])->get();
     }
 
-    public static function getByJual()
+    public static function getByJual($jual)
     {
         return Unit::where('id', '=', @$jual->id_unit)->get();
     }
@@ -47,13 +47,13 @@ class Unit extends Model
 
     public static function getWirausaha()
     {
-        $getWirausaha = Unit::where('jenis', '=', 'Wirausaha')->get();
+        $getWirausaha = Unit::where('jenis', 'Wirausaha')->get();
         return $getWirausaha;
     }
 
     public static function getJasa()
     {
-        $getJasa = Unit::where('jenis', '=', 'Jasa')->get();
+        $getJasa = Unit::where('jenis', 'Jasa');
         return $getJasa;
     }
 }

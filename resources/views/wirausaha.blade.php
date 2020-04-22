@@ -2,61 +2,90 @@
 @section('content')
 @section('title','Wirausaha')
 
-<body class="shards-app-promo-page--1">
-
-    <div class="welcome d-flex justify-content-center flex-column">
+<div class="d-flex justify-content-center flex-column">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light px-0">
         <div class="container">
-            <nav class="navbar navbar-expand-lg navbar-dark pt-4 px-0">
-                <a class="navbar-brand mr-5" href="{{route('landing')}}">
-                    <img src="{{asset('images/prov-banten.png')}}" class="mr-2" width="50em">
-                    SIBUMDes
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item {{ Route::is('landing') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{route('landing')}}">Beranda</a>
-                        </li>
-                    </ul>
-                    <ul class="header-social-icons navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="btn btn-outline-success btn-pill" href="{{route('login')}}"><i
-                                    class="fab fa-stumbleupon"></i> Masuk</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <a class="navbar-brand mr-5" href="{{route('landing')}}">
+                <img src="{{asset('images/prov-banten.png')}}" class="mr-2" width="50em">
+                SIBUMDes
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item {{ Route::is('landing') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{route('landing')}}">Beranda</a>
+                    </li>
+                    <li class="nav-item {{ Route::is('wirausaha') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{route('wirausaha')}}">Wirausaha</a>
+                    </li>
+                    <li class="nav-item {{ Route::is('agribisnis') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{route('agribisnis')}}">Agribisnis</a>
+                    </li>
+                    <li class="nav-item {{ Route::is('jasa') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{route('jasa')}}">Jasa</a>
+                    </li>
+                    <li class="nav-item {{ Route::is('pariwisata') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{route('pariwisata')}}">Pariwisata</a>
+                    </li>
+                </ul>
+                <ul class="header-social-icons navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="btn btn-outline-success btn-pill" href="{{route('login')}}"><i class="fab fa-stumbleupon"></i> Masuk</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="inner-wrapper mt-auto mb-auto container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h4 class="card-title">Wirausaha</h4>
-                            <table width="100%" class="table table-striped table-hover table-sm" id="dataTables">
-                                <thead class="text-center">
-                                    <tr>
-                                        <td>No.</td>
-                                        <td>Nama</td>
-                                        <td>Jenis Usaha</td>
-                                        <td>Omset</td>
-                                        <td>Telp</td>
-                                    </tr>
-                                </thead>
-                                <tbody class="text-center">
-                                   
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+    </nav>
+</div>
+
+<div class="testimonials section vh-100">
+    <div class="container">
+        <div class="page-header row no-gutters py-4">
+            <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+                <span class="text-uppercase page-subtitle">Produk</span>
+                <h3 class="page-title">Wirausaha</h3>
             </div>
         </div>
     </div>
-
-</body>
+    
+    <div class="row container mx-auto my-3">
+        @foreach ($datas as $wirausaha)
+        <div class="col-lg-6 col-md-6 col-sm-12 my-3">
+            <div class="card card-small card-post card-post--aside card-post--1">
+                <div class="card-post__image" style="background-image: url('{{asset('images/jual/'.@$wirausaha->foto)}}');">
+                    <a href="" class="card-post__category badge badge-pill badge-dark">Wirausaha</a>
+                    <div class="card-post__author d-flex">
+                        <a href="" class="card-post__author-avatar card-post__author-avatar--small"
+                            style="background-image: url('{{asset('images/avatar.png')}}');"></a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a class="text-fiord-blue" href="#">{{$wirausaha->produk}}</a>
+                    </h5>
+                    <table class="table-hover table-condensed">
+                        <tr>
+                            <td>Lokasi</td>
+                            <td>: {{$wirausaha->lokasi}}</td>
+                        </tr>
+                        <tr>
+                            <td>Harga</td>
+                            <td>: {{$wirausaha->harga}}</td>
+                        </tr>
+                        <tr>
+                            <td>Kontak</td>
+                            <td>: {{$wirausaha->telp}}</td>
+                        </tr>
+                    </table>
+                    {{-- <span class="text-muted">{{$wirausaha->created_at}}</span> --}}
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div>
 
 @endsection

@@ -16,7 +16,7 @@ $(document).ready(function () {
     if (x < max_fields) {
       x++;
       $(wrapper).append(
-        '<div class="form-horizontal"><div class="row"><div class="form-group col-lg-6 col-md-6 col-sm-12"><label class="label-control">Peruntukan</label><input class="form-control" type="text" name="untuk[]" required /></div><div class="form-group col-lg-6 col-md-6 col-sm-12"><label class="label-control">Persentase</label><input class="form-control" type="number" name="persen[]" required /></div></div><a href="#" class="text-danger remove-field mt-2"><b>Hapus<b></a></div>'
+        '<div class="form-horizontal"><div class="row"><div class="form-group col-lg-6 col-md-6 col-sm-12"><label class="label-control">Peruntukan</label><input class="form-control" type="text" name="untuk[]" required /></div><div class="form-group col-lg-6 col-md-6 col-sm-12"><label class="label-control">Persentase</label><div class="input-group with-addon-icon-left"><input class="form-control" type="number" name="persen[]" required /><span class="input-group-append"><span class="input-group-text"><i class="fa fa-percentage"></i></span></span></div></div></div><a href="#" class="btn btn-outline-danger btn-pill remove-field my-2"><i class="fa fa-minus"></i></a></div>'
       );
     }
   });
@@ -74,9 +74,13 @@ $(document).ready(function () {
                 <div class="card-body">
                     <form action="{{route('hasil.create')}}" method="POST">
                         {{ csrf_field() }}
-                        <h4>Isi Pembagian Hasil</h4>
                         <div class="input-fields-wrap">
-                            <button class="btn btn-outline-primary btn-pill add-field-button mb-2">Tambah</button>
+                            <div class="form-group">
+                                <div class="input-group-prepend">
+                                    <h4 class="m-0">Isi Pembagian Hasil</h4>
+                                    <button class="btn btn-outline-primary btn-pill add-field-button mr-0 ml-auto"><i class="fa fa-plus"></i></button>
+                                </div>
+                            </div>
                             <div class="form-horizontal">
                                 <div class="row">
                                     <div class="form-group col-lg-6 col-md-6 col-sm-12">
@@ -85,7 +89,12 @@ $(document).ready(function () {
                                     </div>
                                     <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                         <label class="label-control">Persentase</label>
-                                        <input class="form-control" type="number" name="persen[]" required />
+                                        <div class="input-group with-addon-icon-left">
+                                            <input class="form-control" type="number" name="persen[]" required />
+                                            <span class="input-group-append">
+                                                <span class="input-group-text"><i class="fa fa-percentage"></i></span>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

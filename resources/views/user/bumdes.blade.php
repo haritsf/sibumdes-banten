@@ -83,17 +83,25 @@ $(document).ready(function () {
                                 <div class="form-control disabled">{{Auth::user()->name}}</div>
                             </div>
                             <div class="form-group">
-                                <label class="label-control">Alamat</label>
-                                <input class="form-control" type="text" name="alamat" required />
-                            </div>
-                            <div class="form-group">
-                                <label class="label-control">Kecamatan</label>
-                                <select class="form-control" type="text" name="kecamatan" required />
+                                <label class="label-control">Kabupaten</label>
+                                <select class="form-control" type="text" name="kabupaten" required />
                                     <option value="Serang">Serang</option>
                                     <option value="Lebak">Lebak</option>
                                     <option value="Pandeglang">Pandeglang</option>
                                     <option value="Tangerang">Tangerang</option>
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="label-control">Kecamatan</label>
+                                <input class="form-control" type="text" name="kecamatan" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="label-control">Desa</label>
+                                <input class="form-control" type="text" name="desa" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="label-control">Alamat</label>
+                                <input class="form-control" type="text" name="alamat" required />
                             </div>
                             <div class="form-group">
                                 <label class="label-control">No. Telp</label>
@@ -123,9 +131,11 @@ $(document).ready(function () {
             <div class="col-lg-8 col-md-8 col-sm 12">
                 <div class="card my-3">
                     <div class="card-body">
-                        <h4 class="text-secondary">Isi Pengurus</h4>
+                        <div class="input-group-prepend">
+                            <h4 class="text-secondary">Isi Pengurus</h4>
+                            <button class="btn btn-outline-primary btn-pill add-field-button mr-0 ml-auto mb-2"><i class="fa fa-plus"></i></button>
+                        </div>
                         <div class="input-fields-wrap">
-                            <button class="btn btn-outline-primary btn-pill add-field-button mb-2">Tambah Pengurus</button>
                             <div class="form-horizontal">
                                 <div class="row">
                                     <div class="form-group col-lg-6 col-md-6 col-sm-12">
@@ -140,7 +150,7 @@ $(document).ready(function () {
                             </div>
                         </div>
                         <div class="input-group-prepend">
-                            <button type="submit" class="btn btn-outline-primary btn-pill mr-0 ml-auto"><i class="far fa-save"></i> Simpan</button>
+                            <button type="submit" class="btn btn-outline-primary btn-pill mr-0 ml-auto">Simpan</button>
                         </div>
                     </div>
                 </div>

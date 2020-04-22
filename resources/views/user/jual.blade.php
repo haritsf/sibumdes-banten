@@ -51,11 +51,20 @@
                                 {{ csrf_field() }}
                                 <div class="input-group-prepend">
                                     <h4>Isi Penjualan</h4>
-                                    <button class="btn btn-outline-primary btn-pill add-field-button mr-0 ml-auto mb-2"><i class="fa fa-plus"></i></button>
                                 </div>
                                 <div class="input-fields-wrap">
                                     <div class="form-horizontal">
                                         <div class="row">
+                                            <div class="form-group col-lg col-md col-sm-12">
+                                                <label class="label-control">Unit</label>
+                                                <select class="form-control" type="text" name="id_unit[]" required>
+                                                    @foreach ($unit as $unit)
+                                                        @if ($unit->id_user == Auth::user()->id)
+                                                            <option value="{{@$unit->id}}">{{@$unit->nama}}</option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                             <div class="form-group col-lg col-md col-sm-12">
                                                 <label class="label-control">Produk</label>
                                                 <input class="form-control" type="text" name="produk[]" required />
@@ -63,7 +72,10 @@
                                             <div class="form-group col-lg col-md col-sm-12">
                                                 <label class="label-control">Foto</label>
                                                 <input class="form-control" type="file" name="file[]" required />
+                                                <div class="invalid-feedback" style="display: flex">Maksimal Ukuran 2MB</div>
                                             </div>
+                                        </div>
+                                        <div class="row">
                                             <div class="form-group col-lg col-md col-sm-12">
                                                 <label class="label-control">Harga</label>
                                                 <input class="form-control" type="number" name="harga[]" required />
@@ -108,7 +120,9 @@
                                         <label class="label-control">Unit</label>
                                         <select class="form-control" type="text" name="id_unit[]" required>
                                             @foreach ($unit as $unit)
-                                                <option value="{{@$unit->id}}">{{@$unit->nama}}</option>
+                                                @if ($unit->id_user == Auth::user()->id)
+                                                    <option value="{{@$unit->id}}">{{@$unit->nama}}</option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     </div>
@@ -119,7 +133,10 @@
                                     <div class="form-group col-lg col-md col-sm-12">
                                         <label class="label-control">Foto</label>
                                         <input class="form-control" type="file" name="file[]" required />
+                                        <div class="invalid-feedback" style="display: flex">Maksimal Ukuran 2MB</div>
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="form-group col-lg col-md col-sm-12">
                                         <label class="label-control">Harga</label>
                                         <input class="form-control" type="number" name="harga[]" required />
@@ -147,109 +164,112 @@
 
     <div class="row">
         @foreach($data as $jual)
-            <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="card my-3">
-                    <div class="card-body">
-                        <div class="form-horizontal">
-                            <div class="form-group">
-                                <div class="input-group-prepend">
-                                    <h4 class="m-0">List</h4>
-                                    <button class="btn btn-outline-primary btn-pill mr-0 ml-auto" data-toggle="modal"
-                                        data-target="#modalEdit{{@$jual->id}}">Ubah</button>
+            @if ($jual->id_bumdes == $bumdes->id)
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="card my-3">
+                        <div class="card-body">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="input-group-prepend">
+                                        <h4 class="m-0">List</h4>
+                                        <button class="btn btn-outline-primary btn-pill mr-0 ml-auto" data-toggle="modal"
+                                            data-target="#modalEdit{{@$jual->id}}">Ubah</button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-control">Unit</label>
+                                    <div class="form-control disabled">{{@$jual->nama}}</div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-control">Produk</label>
+                                    <div class="form-control disabled">{{@$jual->produk}}</div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-control">Gambar</label>
+                                    @if (@$jual->foto == null)
+                                    <img class="input-group-middle mx-auto" src="{{asset('images/default.png')}}"
+                                        alt="{{@$jual->produk}}" width="150rem"/>
+                                    @else
+                                    <img class="input-group-middle mx-auto" src="{{asset('images/jual/'.@$jual->foto)}}"
+                                        alt="{{@$jual->produk}}" width="150rem"/>
+                                    @endif
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-control">Harga</label>
+                                    <div class="form-control disabled">Rp. {{@$jual->harga}}</div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-control">Lokasi</label>
+                                    <div class="form-control disabled">{{@$jual->lokasi}}</div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label-control">Telepon</label>
+                                    <div class="form-control disabled">{{@$jual->telp}}</div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="label-control">Unit</label>
-                                <div class="form-control disabled">{{$unit->where('id', '=', @$jual->id_unit)->first()->nama}}</div>
-                            </div>
-                            <div class="form-group">
-                                <label class="label-control">Produk</label>
-                                <div class="form-control disabled">{{@$jual->produk}}</div>
-                            </div>
-                            <div class="form-group">
-                                <label class="label-control">Gambar</label>
-                                @if (@$jual->foto == null)
-                                <img class="input-group-middle mx-auto" src="{{asset('images/default.png')}}"
-                                    alt="{{@$jual->produk}}" width="150rem">
-                                @else
-                                <img class="input-group-middle mx-auto" src="{{asset('images/jual/'.@$jual->foto)}}"
-                                    alt="{{@$jual->produk}}" width="150rem">
-                                @endif
-                            </div>
-                            <div class="form-group">
-                                <label class="label-control">Harga</label>
-                                <div class="form-control disabled">Rp. {{@$jual->harga}}</div>
-                            </div>
-                            <div class="form-group">
-                                <label class="label-control">Lokasi</label>
-                                <div class="form-control disabled">{{@$jual->lokasi}}</div>
-                            </div>
-                            <div class="form-group">
-                                <label class="label-control">Telepon</label>
-                                <div class="form-control disabled">{{@$jual->telp}}</div>
-                            </div>
-                        </div>
-                        <div class="modal fade" id="modalEdit{{@$jual->id}}" role="dialog">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <form action="{{route('jual.update', $jual->id)}}" method="POST"
-                                        enctype="multipart/form-data">
-                                        {{ csrf_field() }}
-                                        <div class="modal-header">
-                                            <h5 class="modal-title">Ubah Data Penjualan</h5>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="form-horizontal">
-                                                <div class="form-group">
-                                                    <label class="label-control">Produk</label>
-                                                    <input class="form-control" type="text" name="produk"
-                                                        value="{{@$jual->produk}}">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="label-control">Gambar</label><br>
-                                                    @if (@$jual->foto == null)
-                                                    <img class="input-group-middle mx-auto my-3"
-                                                        src="{{asset('images/default.png')}}" alt="{{@$jual->produk}}"
-                                                        width="300rem">
-                                                    @else
-                                                    <img class="input-group-middle mx-auto my-3"
-                                                        src="{{asset('images/jual/'.@$jual->foto)}}" alt="{{@$jual->produk}}"
-                                                        width="300rem">
-                                                    @endif
-                                                    <input class="form-control" type="file" name="file" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="label-control">Harga</label>
-                                                    <input class="form-control" type="number" name="harga"
-                                                        value="{{@$jual->harga}}">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="label-control">Lokasi</label>
-                                                    <input class="form-control" type="text" name="lokasi"
-                                                        value="{{@$jual->lokasi}}">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="label-control">Telepon</label>
-                                                    <input class="form-control" type="text" name="telp"
-                                                        value="{{@$jual->telp}}">
+                            <div class="modal fade" id="modalEdit{{@$jual->id}}" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <form action="{{route('jual.update', $jual->id)}}" method="POST"
+                                            enctype="multipart/form-data">
+                                            {{ csrf_field() }}
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Ubah Data Penjualan</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <label class="label-control">Produk</label>
+                                                        <input class="form-control" type="text" name="produk"
+                                                            value="{{@$jual->produk}}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="label-control">Gambar</label><br>
+                                                        @if (@$jual->foto == null)
+                                                        <img class="input-group-middle mx-auto my-3"
+                                                            src="{{asset('images/default.png')}}" alt="{{@$jual->produk}}"
+                                                            width="300rem" />
+                                                        @else
+                                                        <img class="input-group-middle mx-auto my-3"
+                                                            src="{{asset('images/jual/'.@$jual->foto)}}" alt="{{@$jual->produk}}"
+                                                            width="300rem" />
+                                                        @endif
+                                                        <input class="form-control" type="file" name="file" />
+                                                        <div class="invalid-feedback" style="display: flex">Maksimal Ukuran 2MB</div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="label-control">Harga</label>
+                                                        <input class="form-control" type="number" name="harga"
+                                                            value="{{@$jual->harga}}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="label-control">Lokasi</label>
+                                                        <input class="form-control" type="text" name="lokasi"
+                                                            value="{{@$jual->lokasi}}">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="label-control">Telepon</label>
+                                                        <input class="form-control" type="text" name="telp"
+                                                            value="{{@$jual->telp}}">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="modal-footer bg-whitesmoke br">
-                                            <div style="display:none">
-                                                <input type="number" name="id" value="{{@$jual->id}}">
-                                                <input type="number" name="id_unit" value="{{@$jual->id_unit}}">
+                                            <div class="modal-footer bg-whitesmoke br">
+                                                <div style="display:none">
+                                                    <input type="number" name="id" value="{{@$jual->id}}">
+                                                    <input type="number" name="id_unit" value="{{@$jual->id_unit}}">
+                                                </div>
+                                                <button class="btn btn-outline-danger btn-pill" data-dismiss="modal">Tutup</button>
+                                                <button type="submit" class="btn btn-outline-success btn-pill">Simpan</button>
                                             </div>
-                                            <button class="btn btn-outline-danger btn-pill" data-dismiss="modal">Tutup</button>
-                                            <button type="submit" class="btn btn-outline-success btn-pill">Simpan</button>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endif
         @endforeach
     </div>
 

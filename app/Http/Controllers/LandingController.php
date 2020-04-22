@@ -21,26 +21,25 @@ class LandingController extends Controller
 
     public function wirausaha()
     {
-        $datas['wirausaha'] = Unit::getWirausaha();
+        $datas = Unit::join('juals', 'id_unit', '=', 'units.id')->where('units.jenis', '=', 'Wirausaha')->get();;
         return view('wirausaha', ['datas' => $datas]);
     }
 
     public function jasa()
     {
-        // dd(Unit::with('jual')->get());
-        $datas = Jual::getAllJual();
+        $datas = Unit::join('juals', 'id_unit', '=', 'units.id')->where('units.jenis', '=', 'Jasa')->get();
         return view('jasa', ['datas' => $datas]);
     }
 
     public function agribisnis()
     {
-        $datas = Jual::getAllJual();
+        $datas = Unit::join('juals', 'id_unit', '=', 'units.id')->where('units.jenis', '=', 'Agribisnis')->get();
         return view('agribisnis', ['datas' => $datas]);
     }
 
     public function pariwisata()
     {
-        $datas = Jual::getAllJual();
+        $datas = Unit::join('juals', 'id_unit', '=', 'units.id')->where('units.jenis', '=', 'Pariwisata')->get();
         return view('pariwisata', ['datas' => $datas]);
     }
 

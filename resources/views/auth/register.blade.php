@@ -58,7 +58,7 @@
         </div>
     </nav>
 
-    <main class="py-4">
+    <main class="py-4 vh-100">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
@@ -158,8 +158,8 @@
                                                         Apakah data yang anda <i>input</i> sudah benar?
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Salah</button>
-                                                        <button type="submit" class="btn btn-success">Benar</button>
+                                                        <button type="button" class="btn btn-danger btn-pill" data-dismiss="modal">Salah</button>
+                                                        <button type="submit" class="btn btn-success btn-pill">Benar</button>
                                                     </div>
                                                 </div>
                                             </div>

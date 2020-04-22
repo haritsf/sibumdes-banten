@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="{{asset('css/shards.css')}}">
   <link rel="stylesheet" href="{{asset('css/shards-extras.css')}}">
   <link rel="stylesheet" href="{{asset('css/datatables.css')}}">
+  <link rel="stylesheet" href="{{asset('css/animate.css')}}">
 
   <!-- JavaScript Dependencies -->
   <script src="{{asset('js/jquery.min.js')}}"></script>

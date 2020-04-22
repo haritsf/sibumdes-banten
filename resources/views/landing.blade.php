@@ -38,9 +38,9 @@
   <div class="inner-wrapper mt-auto mb-auto container">
     <div class="row">
       <div class="col-lg-5 col-md-5 col-sm-12 mt-auto mb-auto mr-3">
-        <h1 class="welcome-heading display-4 text-white">Sistem Informasi Badan Usaha Milik Desa</h1>
+        <h1 class="welcome-heading display-4 text-white animated fadeInUp delay-1s">Sistem Informasi Badan Usaha Milik Desa</h1>
         <p class="text-muted"></p>
-        <a href="#introduction" class="btn btn-outline-success btn-pill align-self-center"
+        <a href="#introduction" class="btn btn-outline-success btn-pill align-self-center animated fadeInUp delay-3s"
           data-scroll-to="#introduction" id="scroll-to-content"><i class="fas fa-angle-double-right"></i> Lihat Lebih
           Lanjut</a>
         <div class="d-block mt-4">
@@ -48,7 +48,7 @@
       </div>
 
       <div class="col-lg-4 col-md-5 col-sm-12 ml-auto">
-        <img class="iphone-mockup ml-auto" src="{{asset('images/sibumdes.png')}}">
+        <img class="iphone-mockup ml-auto animated fadeInUp delay-2s" src="{{asset('images/sibumdes.png')}}">
       </div>
     </div>
   </div>
@@ -269,17 +269,5 @@
   </div>
 </div>
 <!-- / Contact Section -->
-
-<script>
-  let btnContainer = document.getElementById("navbarNav");
-  
-  // Get all buttons with class="btn" inside the container
-  let btns = btnContainer.getElementsByClassName("nav-link");
-  
-  // Loop through the buttons and add the active class to the current/clicked button
-  for (let i = 0; i < btns.length; i++) { btns[i].addEventListener("click", function() { let
-    current=document.getElementsByClassName("active"); current[0].className=current[0].className.replace(" active", "" );
-    this.className +=" active" ; }); }
-</script>
 
 @endsection

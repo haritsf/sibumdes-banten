@@ -16,7 +16,7 @@ $(document).ready(function () {
     if (x < max_fields) {
       x++;
       $(wrapper).append(
-        '<div class="form-horizontal"><div class="row"><div class="form-group col-lg-3 col-md-3 col-sm-12"><label class="label-control">Sumber</label><input class="form-control" type="text" name="sumber[]" required /></div><div class="form-group col-lg-3 col-md-3 col-sm-12"><label class="label-control">Bentuk Penyertaan</label><input class="form-control" type="text" name="bentuk[]" required /></div><div class="form-group col-lg-3 col-md-3 col-sm-12"><label class="label-control">Jumlah</label><input class="form-control" type="number" name="jumlah[]" required /></div><div class="form-group col-lg-3 col-md-3 col-sm-12"><label class="label-control">Tahun</label><input class="form-control" type="text" name="tahun[]" required /></div></div><a href="#" class="text-danger remove-field mt-2"><b>Hapus<b></a></div>'
+        '<div class="form-horizontal"><div class="row"><div class="form-group col-lg-3 col-md-3 col-sm-12"><label class="label-control">Sumber</label><input class="form-control" type="text" name="sumber[]" required /></div><div class="form-group col-lg-3 col-md-3 col-sm-12"><label class="label-control">Bentuk Penyertaan</label><input class="form-control" type="text" name="bentuk[]" required /></div><div class="form-group col-lg-3 col-md-3 col-sm-12"><label class="label-control">Jumlah</label><input class="form-control" type="number" name="jumlah[]" required /></div><div class="form-group col-lg-3 col-md-3 col-sm-12"><label class="label-control">Tahun</label><input class="form-control" type="text" name="tahun[]" required /></div></div><a href="#" class="btn btn-outline-danger btn-pill remove-field my-2"><i class="fa fa-minus"></i></a></div>'
       );
     }
   });
@@ -75,9 +75,14 @@ $(document).ready(function () {
                 <div class="card-body">
                     <form action="{{route('modal.create')}}" method="POST">
                         {{ csrf_field() }}
-                        <h4>Isi Permodalan</h4>
+                        
                         <div class="input-fields-wrap">
-                            <button class="btn btn-outline-primary btn-pill add-field-button mb-2">Tambah Modal</button>
+                            <div class="form-group">
+                                <div class="input-group-prepend">
+                                    <h4 class="m-0">Isi Permodalan</h4>
+                                    <button class="btn btn-outline-primary btn-pill add-field-button mr-0 ml-auto"><i class="fa fa-plus"></i></button>
+                                </div>
+                            </div>
                             <div class="form-horizontal">
                                 <div class="row">
                                     <div class="form-group col-lg-3 col-md-3 col-sm-12">
