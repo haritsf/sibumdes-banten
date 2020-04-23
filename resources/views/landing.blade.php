@@ -62,7 +62,7 @@
       <div class="app-screenshot col-lg-4 col-md-12 col-sm-12 px-0 py-5"></div>
       <div id="information" class="app-features-wrapper col-lg-6 col-md-6 col-sm-12 py-5 ml-2">
         <div class="container">
-          <h3 class="section-title underline--left my-5">Jumlah Tiap Kecamatan</h3>
+          <h3 class="section-title underline--left my-5">Jumlah Tiap Kabupaten</h3>
           <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
               <div class="feature py-4 d-flex">

@@ -3,7 +3,7 @@
 @section('title','Agribisnis')
 
 <div class="d-flex justify-content-center flex-column">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light px-0">
+    <nav class="navbar navbar-expand-md navbar-light bg-light shadow-smpx-0">
         <div class="container">
             <a class="navbar-brand mr-5" href="{{route('landing')}}">
                 <img src="{{asset('images/prov-banten.png')}}" class="mr-2" width="50em">
@@ -57,10 +57,6 @@
             <div class="card card-small card-post card-post--aside card-post--1">
                 <div class="card-post__image" style="background-image: url('{{asset('images/jual/'.@$agribisnis->foto)}}');">
                     <a href="" class="card-post__category badge badge-pill badge-dark">Agribisnis</a>
-                    <div class="card-post__author d-flex">
-                        <a href="" class="card-post__author-avatar card-post__author-avatar--small"
-                            style="background-image: url('{{asset('images/avatar.png')}}');"></a>
-                    </div>
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">

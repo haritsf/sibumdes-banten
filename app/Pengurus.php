@@ -18,6 +18,11 @@ class Pengurus extends Model
         'updated_at' => 'datetime',
     ];
 
+    public static function getAll()
+    {
+        return Pengurus::all();
+    }
+
     public static function getByBumdes()
     {
         $getBumdes =  Bumdes::where('id_user', '=', Auth::user()->id)->first();

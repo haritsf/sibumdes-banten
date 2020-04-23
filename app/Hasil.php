@@ -38,4 +38,9 @@ class Hasil extends Model
     {   
         return Hasil::getByUser()->sum('persen');
     }
+    
+    public static function sumAll()
+    {   
+        return Hasil::getAllHasil()->sum('persen');
+    }
 }

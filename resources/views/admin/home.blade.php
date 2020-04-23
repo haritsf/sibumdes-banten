@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.admin')
 @section('content')
 @section('title','Overview')
 <div class="main-content-container container-fluid px-4">

@@ -54,7 +54,7 @@
           <div class="col-lg-4 col-md-6 col-sm-12">
             <p class="text-secondary text-justify">SIBUMDEs adalah Sistem Informasi Badan Usaha Milik Desa
               yang berisi
-              data dan informasi tentang BUMTHES, serta sebagai <i>market place</i> BUMDesa yang ada di
+              data dan informasi tentang BUMDes, serta sebagai <i>market place</i> BUMDesa yang ada di
               Provinsi
               Banten.<br>
               Jika Anda ingin bantuan atau memiliki masukan, silahkan hubungi kami</p>
@@ -65,11 +65,13 @@
               <li><a href="" class="text-secondary">Cara Mendaftar</a></li>
               <li><a href="" class="text-secondary">Cara Mengupdate Data</a></li>
               <li><a href="" class="text-secondary">Cara Pembelian Produk</a></li>
-              <li><a href="" class="text-secondary">Pembatalan Transaksi</a></li>
             </ul>
             <h6 class="text-secondary mb-0"><b>Layanan</b></h6>
             <ul class="list-unstyled">
               <li>Kantor Kami</li>
+              <p>
+                Sukajaya, Kec. Curug, Kota Serang, Banten 42171
+              </p>
             </ul>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12">

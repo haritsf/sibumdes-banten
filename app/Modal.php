@@ -39,4 +39,9 @@ class Modal extends Model
     {   
         return Modal::getByUser()->sum('jumlah');
     }
+
+    public static function sumAll()
+    {   
+        return Modal::getAllModal()->sum('jumlah');
+    }
 }
