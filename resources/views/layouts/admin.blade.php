@@ -84,13 +84,16 @@
                             <a class="nav-link {{ Route::is('admin.unit.view') ? 'active' : '' }}" href="{{route('admin.unit.view')}}">Unit Usaha</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::is('modal.view') ? 'active' : '' }}" href="{{route('modal.view')}}">Permodalan</a>
+                            <a class="nav-link {{ Route::is('admin.modal.view') ? 'active' : '' }}" href="{{route('admin.modal.view')}}">Permodalan</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::is('hasil.view') ? 'active' : '' }}" href="{{route('hasil.view')}}">Hasil</a>
+                            <a class="nav-link {{ Route::is('admin.hasil.view') ? 'active' : '' }}" href="{{route('admin.hasil.view')}}">Hasil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::is('jual.view') ? 'active' : '' }}" href="{{route('jual.view')}}">Penjualan</a>
+                            <a class="nav-link {{ Route::is('admin.jual.view') ? 'active' : '' }}" href="{{route('admin.jual.view')}}">Penjualan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Route::is('admin.user.view') ? 'active' : '' }}" href="{{route('admin.user.view')}}">User</a>
                         </li>
                     </ul>
                 </div>

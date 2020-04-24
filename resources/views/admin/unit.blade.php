@@ -21,7 +21,7 @@
                     <div class="form-horizontal">
                         <div class="form-group">
                             <div class="input-group-prepend">
-                                <h4 class="m-0">Data</h4>
+                                <h4 class="m-0">Data {{$data->id}}</h4>
                             </div>
                         </div>
                         <div class="form-group">

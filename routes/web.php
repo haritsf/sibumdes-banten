@@ -27,6 +27,10 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/home', 'AdminController@homeView')->name('admin.home');
         Route::get('/bumdes', 'AdminController@bumdesView')->name('admin.bumdes.view');
         Route::get('/unit', 'AdminController@unitView')->name('admin.unit.view');
+        Route::get('/modal', 'AdminController@modalView')->name('admin.modal.view');
+        Route::get('/hasil', 'AdminController@hasilView')->name('admin.hasil.view');
+        Route::get('/penjualan', 'AdminController@jualView')->name('admin.jual.view');
+        Route::get('/user', 'AdminController@userView')->name('admin.user.view');
     });
 
     Route::group(['prefix' => 'dashboard', 'namespace' => '\App\Http\Controllers', 'middleware' => 'user'], function () {

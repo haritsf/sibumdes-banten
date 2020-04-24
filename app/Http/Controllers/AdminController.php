@@ -25,7 +25,7 @@ class AdminController extends Controller
 
     public function bumdesView()
     {
-        $datas['bumdes'] = Bumdes::getAllBumdes();
+        $datas = Bumdes::getAllBumdes();
         return view('admin.bumdes', compact('datas'));
     }
 
@@ -33,7 +33,32 @@ class AdminController extends Controller
     {
         $datas['unit'] = Bumdes::join('units', 'id_bumdes', '=', 'bumdes.id')->get();
         $datas['bumdes'] = Bumdes::getAllBumdes();
-        // dd($datas);
         return view('admin.unit', compact('datas'));
+    }
+
+    public function modalView()
+    {
+        $datas = Modal::join('bumdes', 'id_bumdes', '=', 'bumdes.id')->get();
+        return view('admin.modal', compact('datas'));
+    }
+
+    public function hasilView()
+    {
+        $datas = Hasil::join('bumdes', 'id_bumdes', '=', 'bumdes.id')->get();
+        return view('admin.hasil', compact('datas'));
+    }
+
+    public function jualView()
+    {
+        $datas['jual'] = Jual::join('units', 'id_unit', '=', 'units.id');
+        $datas['jual'] = $datas['jual']->join('bumdes', 'id_bumdes', '=', 'bumdes.id')->get();
+        $datas['unit'] = Unit::getAllUnit();
+        return view('admin.jual', compact('datas'));
+    }
+
+    public function userView()
+    {
+        $datas = User::getAllUser();
+        return view('admin.user', compact('datas'));
     }
 }

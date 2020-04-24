@@ -14,14 +14,14 @@
     </div>
 
     <div class="row">
-        @foreach ($datas['bumdes'] as $data)
+        @foreach ($datas as $data)
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="card my-3">
                 <div class="card-body">
                     <div class="form-horizontal">
                         <div class="form-group">
                             <div class="input-group-prepend">
-                                <h4 class="m-0">Data</h4>
+                                <h4 class="m-0">Data {{@$data->id}}</h4>
                             </div>
                         </div>
                         <div class="form-group">
@@ -47,10 +47,6 @@
                         <div class="form-group">
                             <label class="label-control">No. Telp</label>
                             <div class="form-control disabled">{{@$data->telp}}</div>
-                        </div>
-                        <div class="form-group">
-                            <label class="label-control">Email</label>
-                            <div class="form-control disabled"> Belum Fix </div>
                         </div>
                     </div>
                     <div class="form-horizontal">
