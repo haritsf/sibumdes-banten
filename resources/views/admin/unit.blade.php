@@ -13,6 +13,41 @@
         </div>
     </div>
 
+    {{-- Hidden Tables --}}
+    <table style="display: none" id="hiddenTables">
+        <thead class="text-center">
+            <tr>
+                <td>Nama BUMDes</td>
+                <td>Nama Unit Usaha</td>
+                <td>Jenis Usaha</td>
+                <td>Omset</td>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            @foreach ($datas['unit'] as $data)
+            <tr>
+                <td>
+                    @if ( $check = $datas['bumdes']->where('id_user', $data->id_user)->first())
+                        {{$check->nama}}
+                    @endif
+                </td>
+                <td>{{@$data->nama}}</td>
+                <td>{{@$data->jenis}}</td>
+                <td>Rp. {{@$data->omset}}</td>
+            </tr>
+            @endforeach
+        </tbody>
+        <tfoot class="text-center">
+            <tr>
+                <td>Nama BUMDes</td>
+                <td>Nama Unit Usaha</td>
+                <td>Jenis Usaha</td>
+                <td>Omset</td>
+            </tr>
+        </tfoot>
+    </table>
+    {{-- End of Hidden Tables --}}
+
     <div class="row">
         @foreach ($datas['unit'] as $data)
         <div class="col-lg-4 col-md-4 col-sm-12">
@@ -43,21 +78,6 @@
                         <div class="form-group">
                             <label class="label-control">Omset</label>
                             <div class="form-control disabled">Rp. {{@$data->omset}}</div>
-                        </div>
-                    </div>
-                    <div class="modal fade" id="modalEdit{{@$data->id}}" role="dialog">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form action="route('bumdes.update', $data['bumdes']['id'])" method="POST">
-                                    {{ csrf_field() }}
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Ubah Data BUMDes</h5>
-                                    </div>
-                                    <div class="modal-body">
-                                        
-                                    </div>
-                                </form>
-                            </div>
                         </div>
                     </div>
                 </div>

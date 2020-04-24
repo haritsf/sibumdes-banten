@@ -13,6 +13,52 @@
         </div>
     </div>
 
+    {{-- Hidden Tables --}}
+    <table style="display: none" id="hiddenTables">
+        <thead class="text-center">
+            <tr>
+                <td>Nama</td>
+                <td>Kabupaten</td>
+                <td>Kecamatan</td>
+                <td>Desa</td>
+                <td>Alamat</td>
+                <td>No. Telp</td>
+                <td>Tanggal Musyawarah</td>
+                <td>Peraturan Desa</td>
+                <td>SK Kepala Desa</td>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            @foreach ($datas as $data)
+            <tr>
+                <td>{{@$data->nama}}</td>
+                <td>{{@$data->kabupaten}}</td>
+                <td>{{@$data->kecamatan}}</td>
+                <td>{{@$data->desa}}</td>
+                <td>{{@$data->alamat}}</td>
+                <td>{{@$data->telp}}</td>
+                <td>{{@$data->musyawarah}}</td>
+                <td>{{@$data->perdes}}</td>
+                <td>{{@$data->sk}}</td>
+            </tr>
+            @endforeach
+        </tbody>
+        <tfoot class="text-center">
+            <tr>
+                <td>Nama</td>
+                <td>Kabupaten</td>
+                <td>Kecamatan</td>
+                <td>Desa</td>
+                <td>Alamat</td>
+                <td>No. Telp</td>
+                <td>Tanggal Musyawarah</td>
+                <td>Peraturan Desa</td>
+                <td>SK Kepala Desa</td>
+            </tr>
+        </tfoot>
+    </table>
+    {{-- End of Hidden Tables --}}
+
     <div class="row">
         @foreach ($datas as $data)
         <div class="col-lg-4 col-md-4 col-sm-12">
@@ -37,7 +83,7 @@
                             <div class="form-control disabled">{{@$data->kecamatan}}</div>
                         </div>
                         <div class="form-group">
-                            <label class="label-control">Kecamatan</label>
+                            <label class="label-control">Desa</label>
                             <div class="form-control disabled">{{@$data->desa}}</div>
                         </div>
                         <div class="form-group">

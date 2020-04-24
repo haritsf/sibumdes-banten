@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'admin', 'namespace' => '\App\Http\Controllers', 'middleware' => 'administrator'], function () {
         Route::get('/home', 'AdminController@homeView')->name('admin.home');
         Route::get('/bumdes', 'AdminController@bumdesView')->name('admin.bumdes.view');
+        Route::get('/pengurus', 'AdminController@pengurusView')->name('admin.pengurus.view');
         Route::get('/unit', 'AdminController@unitView')->name('admin.unit.view');
         Route::get('/modal', 'AdminController@modalView')->name('admin.modal.view');
         Route::get('/hasil', 'AdminController@hasilView')->name('admin.hasil.view');

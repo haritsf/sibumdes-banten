@@ -62,9 +62,8 @@
           <div class="col-lg-4 col-md-6 col-sm-12">
             <h6 class="text-secondary mb-0"><b>Bantuan</b></h6>
             <ul class="list-unstyled">
-              <li><a href="" class="text-secondary">Cara Mendaftar</a></li>
-              <li><a href="" class="text-secondary">Cara Mengupdate Data</a></li>
-              <li><a href="" class="text-secondary">Cara Pembelian Produk</a></li>
+              <li><a href="#" class="text-secondary">Cara Mendaftar</a></li>
+              <li><a href="#" class="text-secondary">Cara Mengupdate Data</a></li>
             </ul>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12">
@@ -74,6 +73,9 @@
                 <td>Email</td>
                 <td>: dpmd@bantenprov.go.id</td>
               </tr>
+            </table><br />
+            <h6 class="text-secondary mb-0"><b>Forum BUMDEs Indonesia Provinsi Banten</b></h6>
+            <table class="text-secondary">
               <tr>
                 <td>Kontak</td>
                 <td>: +6281906000006</td>

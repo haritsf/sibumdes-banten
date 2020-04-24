@@ -188,7 +188,7 @@ $(document).ready(function () {
                             <div class="form-control disabled">{{@$data['bumdes']['kecamatan']}}</div>
                         </div>
                         <div class="form-group">
-                            <label class="label-control">Kecamatan</label>
+                            <label class="label-control">Desa</label>
                             <div class="form-control disabled">{{@$data['bumdes']['desa']}}</div>
                         </div>
                         <div class="form-group">

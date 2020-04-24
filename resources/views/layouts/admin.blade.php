@@ -37,11 +37,30 @@
     <script>
         $(document).ready(function() {
           $('#dataTables').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'excelHtml5',
+            ],
             'paging'      : true,
             'lengthChange': true,
             'searching'   : true,
             'ordering'    : true,
             'info'        : true,
+            'autoWidth'   : true
+          });
+        });
+
+        $(document).ready(function() {
+          $('#hiddenTables').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'excelHtml5',
+            ],
+            'paging'      : false,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : false,
+            'info'        : false,
             'autoWidth'   : true
           });
         });
@@ -79,6 +98,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('admin.bumdes.view') ? 'active' : '' }}" href="{{route('admin.bumdes.view')}}">BUMDes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Route::is('admin.pengurus.view') ? 'active' : '' }}" href="{{route('admin.pengurus.view')}}">Pengurus</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('admin.unit.view') ? 'active' : '' }}" href="{{route('admin.unit.view')}}">Unit Usaha</a>

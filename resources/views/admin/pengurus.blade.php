@@ -2,14 +2,14 @@
 
 @section('content')
 
-@section('title','Hasil')
+@section('title','Pengurus')
 
 <div class="main-content-container container-fluid px-4">
     <!-- Page Header -->
     <div class="page-header row no-gutters py-4">
         <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
             <span class="text-uppercase page-subtitle">Dashboard</span>
-            <h3 class="page-title">Pembagian Hasil</h3>
+            <h3 class="page-title">Pengurus</h3>
         </div>
     </div>
     <!-- End Page Header -->
@@ -23,24 +23,28 @@
                             <thead class="text-center">
                                 <tr>
                                     <td>Nama BUMDes</td>
-                                    <td>Peruntukkan</td>
-                                    <td>Presentase</td>
+                                    <td>Nama Pengurus</td>
+                                    <td>Jabatan</td>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
-                                @foreach ($datas as $data)
+                                @foreach ($datas['pengurus'] as $data)
                                 <tr>
-                                    <td>{{$data->nama}}</td>
-                                    <td>{{$data->untuk}}</td>
-                                    <td>{{$data->persen}}%</td>
+                                    <td>
+                                        @if ( $check = $datas['bumdes']->where('id', $data->id_bumdes)->first())
+                                            {{$check->nama}}
+                                        @endif
+                                    </td>
+                                    <td>{{@$data->nama}}</td>
+                                    <td>{{@$data->jabatan}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
                             <tfoot class="text-center">
                                 <tr>
                                     <td>Nama BUMDes</td>
-                                    <td>Peruntukkan</td>
-                                    <td>Presentase</td>
+                                    <td>Nama Pengurus</td>
+                                    <td>Jabatan</td>
                                 </tr>
                             </tfoot>
                         </table>

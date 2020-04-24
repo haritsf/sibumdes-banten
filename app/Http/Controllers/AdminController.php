@@ -29,6 +29,13 @@ class AdminController extends Controller
         return view('admin.bumdes', compact('datas'));
     }
 
+    public function pengurusView()
+    {
+        $datas['pengurus'] = Bumdes::join('penguruses', 'id_bumdes', '=', 'bumdes.id')->get();
+        $datas['bumdes'] = Bumdes::getAllBumdes();
+        return view('admin.pengurus', compact('datas'));
+    }
+
     public function unitView()
     {
         $datas['unit'] = Bumdes::join('units', 'id_bumdes', '=', 'bumdes.id')->get();
