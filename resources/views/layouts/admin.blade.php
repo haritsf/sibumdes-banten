@@ -75,15 +75,13 @@
                 <div class="nav-wrapper">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::is('admin.home') ? 'active' : '' }}"
-                                href="{{route('admin.home')}}">Overview</a>
-                        </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link {{ Route::is('bumdes.view') ? 'active' : '' }}"
-                                href="{{route('bumdes.view')}}">BUMDes</a>
+                            <a class="nav-link {{ Route::is('admin.home') ? 'active' : '' }}" href="{{route('admin.home')}}">Overview</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ Route::is('unit.view') ? 'active' : '' }}" href="{{route('unit.view')}}">Unit Usaha</a>
+                            <a class="nav-link {{ Route::is('admin.bumdes.view') ? 'active' : '' }}" href="{{route('admin.bumdes.view')}}">BUMDes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Route::is('admin.unit.view') ? 'active' : '' }}" href="{{route('admin.unit.view')}}">Unit Usaha</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('modal.view') ? 'active' : '' }}" href="{{route('modal.view')}}">Permodalan</a>
@@ -93,7 +91,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('jual.view') ? 'active' : '' }}" href="{{route('jual.view')}}">Penjualan</a>
-                        </li> --}}
+                        </li>
                     </ul>
                 </div>
             </aside>

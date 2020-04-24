@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -44,11 +44,20 @@ class LoginController extends Controller
         return 'username';
     }
 
-    public function logout(Request $request)
+    public function authenticated($request, $user)
     {
-        $request->session()->flush();
-        Auth::logout();
-        // return redirect('/');
-        return redirect()->route('landing');
+        if ($user->role == 'admin') {
+            return redirect()->route('admin.home');
+        } elseif ($user->role == 'bumdes') {
+            return redirect()->route('home');
+        }
     }
+
+    // public function logout(Request $request)
+    // {
+    //     $request->session()->flush();
+    //     Auth::logout();
+    //     // return redirect('/');
+    //     return redirect()->route('landing');
+    // }
 }

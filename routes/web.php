@@ -25,6 +25,8 @@ Auth::routes(['reset' => false, 'register' => true, 'verify' => true]);
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['prefix' => 'admin', 'namespace' => '\App\Http\Controllers', 'middleware' => 'administrator'], function () {
         Route::get('/home', 'AdminController@homeView')->name('admin.home');
+        Route::get('/bumdes', 'AdminController@bumdesView')->name('admin.bumdes.view');
+        Route::get('/unit', 'AdminController@unitView')->name('admin.unit.view');
     });
 
     Route::group(['prefix' => 'dashboard', 'namespace' => '\App\Http\Controllers', 'middleware' => 'user'], function () {
@@ -52,4 +54,4 @@ Route::group(['middleware' => 'auth'], function () {
     });
 });
 
-Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+// Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');

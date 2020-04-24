@@ -8,6 +8,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark px-0">
       <a class="navbar-brand mr-5" href="{{route('landing')}}">
         <img src="{{asset('images/prov-banten.png')}}" class="mr-2" width="50em">
+        <img src="{{asset('images/komunitas.png')}}" class="mr-2" width="70em">
         SIBUMDes
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -15,21 +16,18 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          <li class="nav-item {{ Route::is('landing') ? 'active' : '' }}">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-2 {{ Route::is('landing') ? 'active' : '' }}">
             <a class="nav-link" href="{{route('landing')}}">Beranda</a>
           </li>
-          <li class="nav-item {{ Route::is('landing/#information') ? 'active' : '' }}">
+          <li class="nav-item mx-2 {{ Route::is('landing/#information') ? 'active' : '' }}">
             <a class="nav-link" href="#information" data-scroll-to="#information">Informasi</a>
           </li>
-          <li class="nav-item {{ Route::is('landing/#data') ? 'active' : '' }}">
+          <li class="nav-item mx-2 {{ Route::is('landing/#data') ? 'active' : '' }}">
             <a class="nav-link" href="#data" data-scroll-to="#data">Data</a>
           </li>
-        </ul>
-        <ul class="header-social-icons navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="btn btn-outline-success btn-pill" href="{{route('login')}}"><i class="fab fa-stumbleupon"></i>
-              Masuk</a>
+          <li class="nav-item mx-2">
+            <a class="btn btn-md btn-outline-success btn-pill" href="{{route('login')}}"><i class="fab fa-stumbleupon"></i> Masuk</a>
           </li>
         </ul>
       </div>
@@ -41,8 +39,7 @@
         <h1 class="welcome-heading display-4 text-white animated fadeInUp delay-1s">Sistem Informasi Badan Usaha Milik Desa</h1>
         <p class="text-muted"></p>
         <a href="#introduction" class="btn btn-outline-success btn-pill align-self-center animated fadeInUp delay-3s"
-          data-scroll-to="#introduction" id="scroll-to-content"><i class="fas fa-angle-double-right"></i> Lihat Lebih
-          Lanjut</a>
+          data-scroll-to="#introduction" id="scroll-to-content"><i class="fas fa-angle-double-right"></i> Lihat</a>
         <div class="d-block mt-4">
         </div>
       </div>

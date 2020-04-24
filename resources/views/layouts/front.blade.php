@@ -66,18 +66,19 @@
               <li><a href="" class="text-secondary">Cara Mengupdate Data</a></li>
               <li><a href="" class="text-secondary">Cara Pembelian Produk</a></li>
             </ul>
-            <h6 class="text-secondary mb-0"><b>Layanan</b></h6>
-            <ul class="list-unstyled">
-              <li>Kantor Kami</li>
-              <p>
-                Sukajaya, Kec. Curug, Kota Serang, Banten 42171
-              </p>
-            </ul>
           </div>
           <div class="col-lg-4 col-md-6 col-sm-12">
-            <h6 class="text-secondary mb-0"><b>Dinas Pemberdayaan Masyarakat dan Desa Provinsi Banten</b>
-            </h6>
-            <p class="text-secondary">Email : dpmd@bantenprov.go.id</p>
+            <h6 class="text-secondary mb-0"><b>Dinas Pemberdayaan Masyarakat dan Desa Provinsi Banten</b></h6>
+            <table class="text-secondary">
+              <tr>
+                <td>Email</td>
+                <td>: dpmd@bantenprov.go.id</td>
+              </tr>
+              <tr>
+                <td>Kontak</td>
+                <td>: +6281906000006</td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>

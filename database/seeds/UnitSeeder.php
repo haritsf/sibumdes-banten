@@ -15,7 +15,7 @@ class UnitSeeder extends Seeder
         Unit::insert([
             [
                 'id_bumdes' => 1,
-                'nama' => "CV. Sukses Makmur Jaya",
+                'nama' => "Sukses Makmur Berjasa",
                 'jenis' => "Jasa",
                 'omset' => 5000000,
                 'created_at' => now(),

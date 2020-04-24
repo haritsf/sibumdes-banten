@@ -32,8 +32,20 @@
                 <div class="card-body p-0 d-flex">
                     <div class="d-flex flex-column m-auto">
                         <div class="stats-small__data text-center">
+                            <span class="stats-small__label text-uppercase">Total BUMDes</span>
+                            <h6 class="stats-small__value count my-3">{{$datas['bumdes']}} Terdaftar</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg col-md col-sm-6 mb-4">
+            <div class="stats-small stats-small--1 card card-small">
+                <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                        <div class="stats-small__data text-center">
                             <span class="stats-small__label text-uppercase">Pengurus</span>
-                            <h6 class="stats-small__value count my-3">{{$datas['pengurus']->count()}} Orang</h6>
+                            <h6 class="stats-small__value count my-3">{{$datas['pengurus']}} Orang</h6>
                         </div>
                     </div>
                 </div>
@@ -45,7 +57,7 @@
                     <div class="d-flex flex-column m-auto">
                         <div class="stats-small__data text-center">
                             <span class="stats-small__label text-uppercase">Jenis Usaha</span>
-                            <h6 class="stats-small__value count my-3">{{$datas['unit']->count()}} Unit</h6>
+                            <h6 class="stats-small__value count my-3">{{$datas['unit']}} Unit</h6>
                         </div>
                     </div>
                 </div>
@@ -56,37 +68,13 @@
                 <div class="card-body p-0 d-flex">
                     <div class="d-flex flex-column m-auto">
                         <div class="stats-small__data text-center">
-                            <span class="stats-small__label text-uppercase">Total Modal</span>
-                            <h6 class="stats-small__value count my-3">Rp. {{$datas['sumModal']}}</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg col-md col-sm-6 mb-4">
-            <div class="stats-small stats-small--1 card card-small">
-                <div class="card-body p-0 d-flex">
-                    <div class="d-flex flex-column m-auto">
-                        <div class="stats-small__data text-center">
-                            <span class="stats-small__label text-uppercase">Pembagian Hasil</span>
-                            <h6 class="stats-small__value count my-3">{{$datas['sumHasil']}}%</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {{-- <div class="col-lg col-md col-sm-6 mb-4">
-            <div class="stats-small stats-small--1 card card-small">
-                <div class="card-body p-0 d-flex">
-                    <div class="d-flex flex-column m-auto">
-                        <div class="stats-small__data text-center">
-                            <span class="stats-small__label text-uppercase">Penjualan</span>
+                            <span class="stats-small__label text-uppercase">Total Penjualan</span>
                             <h6 class="stats-small__value count my-3">{{$datas['jual']}} Produk</h6>
                         </div>
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
     </div>
 </div>
 @endsection
