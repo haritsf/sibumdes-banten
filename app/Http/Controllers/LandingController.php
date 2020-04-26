@@ -21,8 +21,9 @@ class LandingController extends Controller
 
     public function wirausaha()
     {
-        $datas = Unit::join('juals', 'id_unit', '=', 'units.id')->where('units.jenis', '=', 'Wirausaha')->get();;
-        return view('wirausaha', ['datas' => $datas]);
+        $datas = Unit::join('juals', 'id_unit', '=', 'units.id')->where('units.jenis', '=', 'Wirausaha')->get();
+        $bumdes = Bumdes::getAllBumdes();
+        return view('wirausaha', ['datas' => $datas, 'bumdes' => $bumdes]);
     }
 
     public function jasa()
@@ -35,16 +36,18 @@ class LandingController extends Controller
     public function agribisnis()
     {
         $datas = Unit::join('juals', 'id_unit', '=', 'units.id')->where('units.jenis', '=', 'Agribisnis')->get();
-        return view('agribisnis', ['datas' => $datas]);
+        $bumdes = Bumdes::getAllBumdes();
+        return view('agribisnis', ['datas' => $datas, 'bumdes' => $bumdes]);
     }
 
     public function pariwisata()
     {
         $datas = Unit::join('juals', 'id_unit', '=', 'units.id')->where('units.jenis', '=', 'Pariwisata')->get();
-        return view('pariwisata', ['datas' => $datas]);
+        $bumdes = Bumdes::getAllBumdes();
+        return view('pariwisata', ['datas' => $datas, 'bumdes' => $bumdes]);
     }
 
-    public function review() {
-    
+    public function review()
+    {
     }
 }
