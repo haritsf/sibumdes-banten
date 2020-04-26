@@ -12,6 +12,20 @@
             <h3 class="page-title">User</h3>
         </div>
     </div>
+    @if ($message = Session::get('danger'))
+    <div class="alert alert-danger alert-dismissible fade show alert-has-icon mt-3" role="alert">
+        <div class="alert-icon">
+            <i class="fas fa-trash"></i>
+        </div>
+        <div class="alert-body">
+            <div class="alert-title" style="font-weight:normal">Sukses</div>
+            {{$message}}
+        </div>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
     <!-- End Page Header -->
 
     <div class="row">
@@ -24,10 +38,10 @@
                                 <tr>
                                     <td>No.</td>
                                     <td>Username</td>
-                                    {{-- <td>Password</td> --}}
                                     <td>Email</td>
                                     <td>Nama</td>
                                     <td>Created At</td>
+                                    <td>Opsi</td>
                                 </tr>
                             </thead>
                             <tbody class="text-center">
@@ -35,10 +49,36 @@
                                 <tr>
                                     <td>{{@$data->id}}</td>
                                     <td>{{@$data->username}}</td>
-                                    {{-- <td>{{@$data->password}}</td> --}}
                                     <td>{{@$data->email}}</td>
                                     <td>{{@$data->name}}</td>
                                     <td>{{@$data->created_at}}</td>
+                                    <td>
+                                        @if (@$data->role != "admin")
+                                        <button class="btn btn-outline-danger btn-pill" data-toggle="modal" data-target="#modalDelete{{@$data->id}}"><i class="fa fa-minus"></i></button>
+                                        @endif
+                                    </td>
+                                    <div class="modal fade" id="modalDelete{{@$data->id}}" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <form action="{{route('admin.user.delete', $data->id)}}" method="POST">
+                                                    {{ csrf_field() }}
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Hapus User</h5>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Apakah anda yakin ingin menghapus {{@$data->name}}?
+                                                    </div>
+                                                    <div class="modal-footer bg-whitesmoke br">
+                                                        <div style="display:none">
+                                                            <input type="number" name="id" value="{{@$data->id}}">
+                                                        </div>
+                                                        <button class="btn btn-outline-danger btn-pill" data-dismiss="modal">Tidak</button>
+                                                        <button type="submit" class="btn btn-outline-success btn-pill">Iya</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -46,10 +86,10 @@
                                 <tr>
                                     <td>No.</td>
                                     <td>Username</td>
-                                    {{-- <td>Password</td> --}}
                                     <td>Email</td>
                                     <td>Name</td>
                                     <td>Created At</td>
+                                    <td>Opsi</td>
                                 </tr>
                             </tfoot>
                         </table>

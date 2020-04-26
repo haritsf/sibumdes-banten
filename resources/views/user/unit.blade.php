@@ -159,8 +159,8 @@ $(document).ready(function () {
                                 <div class="form-group">
                                     <div class="input-group-prepend">
                                         <h4 class="m-0">Data</h4>
-                                        {{-- <button class="btn btn-outline-warning btn-pill mr-0 ml-auto" data-toggle="modal"
-                                            data-target="#modalEdit{{@$data['id']}}">Ubah</button> --}}
+                                        <button class="btn btn-outline-primary btn-pill mr-0 ml-auto" data-toggle="modal" data-target="#modalEdit{{@$data->id}}">Ubah</button>
+                                        <button class="btn btn-outline-danger btn-pill mr-0 ml-1" data-toggle="modal" data-target="#modalHapus{{@$data->id}}">Hapus</button>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -179,13 +179,63 @@ $(document).ready(function () {
                             <div class="modal fade" id="modalEdit{{@$data->id}}" role="dialog">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form action="route('bumdes.update', $data['bumdes']['id'])" method="POST">
+                                        <form action="{{route('unit.update', $data->id)}}" method="POST">
                                             {{ csrf_field() }}
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Ubah Data BUMDes</h5>
+                                                <h5 class="modal-title">Ubah Data Unit</h5>
                                             </div>
                                             <div class="modal-body">
-                                                
+                                                <div class="form-horizontal row">
+                                                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                                        <label class="label-control">Nama</label>
+                                                        <input class="form-control" type="text" name="nama" value="{{@$data->nama}}" required />
+                                                    </div>
+                                                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                                        <label class="label-control">Jenis Usaha</label>
+                                                        <select class="form-control" type="text" name="jenis" required>
+                                                            <option value="{{@$data->jenis}}">{{@$data->jenis}}</option>
+                                                            <option value="Wirausaha">Wirausaha</option>
+                                                            <option value="Agribisnis">Agribisnis</option>
+                                                            <option value="Jasa">Pelayanan Jasa</option>
+                                                            <option value="Pariwisata">Pariwisata</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                                        <label class="label-control">Omset</label>
+                                                        <input class="form-control" type="number" name="omset" value="{{@$data->omset}}" required />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer bg-whitesmoke br">
+                                                <div style="display:none">
+                                                    <input type="number" name="id" value="{{@$data->id}}">
+                                                    <input type="number" name="id_bumdes" value="{{@$data->id_bumdes}}">
+                                                </div>
+                                                <button class="btn btn-outline-danger btn-pill"
+                                                    data-dismiss="modal">Tutup</button>
+                                                <button type="submit" class="btn btn-outline-success btn-pill">Simpan</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="modalHapus{{@$data->id}}" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <form action="{{route('unit.delete', $data->id)}}" method="POST">
+                                            {{ csrf_field() }}
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Hapus Data Unit</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah anda yakin ingin menghapus {{@$data->nama}}?
+                                            </div>
+                                            <div class="modal-footer bg-whitesmoke br">
+                                                <div style="display:none">
+                                                    <input type="number" name="id" value="{{@$data->id}}">
+                                                </div>
+                                                <button class="btn btn-outline-danger btn-pill" data-dismiss="modal">Tidak</button>
+                                                <button type="submit" class="btn btn-outline-success btn-pill">Iya</button>
                                             </div>
                                         </form>
                                     </div>

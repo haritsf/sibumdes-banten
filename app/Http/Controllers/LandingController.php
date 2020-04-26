@@ -28,7 +28,8 @@ class LandingController extends Controller
     public function jasa()
     {
         $datas = Unit::join('juals', 'id_unit', '=', 'units.id')->where('units.jenis', '=', 'Jasa')->get();
-        return view('jasa', ['datas' => $datas]);
+        $bumdes = Bumdes::getAllBumdes();
+        return view('jasa', ['datas' => $datas, 'bumdes' => $bumdes]);
     }
 
     public function agribisnis()

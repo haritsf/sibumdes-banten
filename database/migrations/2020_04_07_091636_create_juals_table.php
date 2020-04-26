@@ -20,6 +20,7 @@ class CreateJualsTable extends Migration
             $table->string('produk');
             $table->string('foto')->nullable();
             $table->integer('harga');
+            $table->string('deskripsi')->nullable();
             $table->string('lokasi');
             $table->string('telp');
             $table->timestamps();

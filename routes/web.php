@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/hasil', 'AdminController@hasilView')->name('admin.hasil.view');
         Route::get('/penjualan', 'AdminController@jualView')->name('admin.jual.view');
         Route::get('/user', 'AdminController@userView')->name('admin.user.view');
+        Route::post('/user/{id}/delete', 'AdminController@userDelete')->name('admin.user.delete');
     });
 
     Route::group(['prefix' => 'dashboard', 'namespace' => '\App\Http\Controllers', 'middleware' => 'user'], function () {
@@ -46,16 +47,23 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::get('/unit', 'HomeController@unitView')->name('unit.view');
         Route::post('/unit/create', 'HomeController@unitCreate')->name('unit.create');
+        Route::post('/unit/{id}/update', 'HomeController@unitUpdate')->name('unit.update');
+        Route::post('/unit/{id}/delete', 'HomeController@unitDelete')->name('unit.delete');
 
         Route::get('/modal', 'HomeController@modalView')->name('modal.view');
         Route::post('/modal/create', 'HomeController@modalCreate')->name('modal.create');
+        Route::post('/modal/{id}/update', 'HomeController@modalUpdate')->name('modal.update');
+        Route::post('/modal/{id}/delete', 'HomeController@modalDelete')->name('modal.delete');
 
         Route::get('/hasil', 'HomeController@hasilView')->name('hasil.view');
         Route::post('/hasil/create', 'HomeController@hasilCreate')->name('hasil.create');
+        Route::post('/hasil/{id}/update', 'HomeController@hasilUpdate')->name('hasil.update');
+        Route::post('/hasil/{id}/delete', 'HomeController@hasilDelete')->name('hasil.delete');
 
         Route::get('/penjualan', 'HomeController@jualView')->name('jual.view');
         Route::post('/penjualan/create', 'HomeController@jualCreate')->name('jual.create');
         Route::post('/penjualan/{id}/update', 'HomeController@jualUpdate')->name('jual.update');
+        Route::post('/penjualan/{id}/delete', 'HomeController@jualDelete')->name('jual.delete');
     });
 });
 

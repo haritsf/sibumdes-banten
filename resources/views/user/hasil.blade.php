@@ -68,117 +68,183 @@ $(document).ready(function () {
     </div>
 
         @if(@$check == true)
-    <div class="row">
-        <div class="col-lg-8 col-md-8 col-sm-12">
-            <div class="card my-3">
-                <div class="card-body">
-                    <form action="{{route('hasil.create')}}" method="POST">
-                        {{ csrf_field() }}
-                        <div class="input-fields-wrap">
-                            <div class="form-group">
-                                <div class="input-group-prepend">
-                                    <h4 class="m-0">Isi Pembagian Hasil</h4>
-                                    <button class="btn btn-outline-primary btn-pill add-field-button mr-0 ml-auto"><i class="fa fa-plus"></i></button>
-                                </div>
-                            </div>
-                            <div class="form-horizontal">
-                                <div class="row">
-                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                        <label class="label-control">Peruntukan</label>
-                                        <input class="form-control" type="text" name="untuk[]" required />
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12">
+                <div class="card my-3">
+                    <div class="card-body">
+                        <form action="{{route('hasil.create')}}" method="POST">
+                            {{ csrf_field() }}
+                            <div class="input-fields-wrap">
+                                <div class="form-group">
+                                    <div class="input-group-prepend">
+                                        <h4 class="m-0">Isi Pembagian Hasil</h4>
+                                        <button class="btn btn-outline-primary btn-pill add-field-button mr-0 ml-auto"><i class="fa fa-plus"></i></button>
                                     </div>
-                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
-                                        <label class="label-control">Persentase</label>
-                                        <div class="input-group with-addon-icon-left">
-                                            <input class="form-control" type="number" name="persen[]" required />
-                                            <span class="input-group-append">
-                                                <span class="input-group-text"><i class="fa fa-percentage"></i></span>
-                                            </span>
+                                </div>
+                                <div class="form-horizontal">
+                                    <div class="row">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="label-control">Peruntukan</label>
+                                            <input class="form-control" type="text" name="untuk[]" required />
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="label-control">Persentase</label>
+                                            <div class="input-group with-addon-icon-left">
+                                                <input class="form-control" type="number" name="persen[]" required />
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text"><i class="fa fa-percentage"></i></span>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="input-group-prepend">
-                            <button type="submit" class="btn btn-outline-primary btn-pill mr-0 ml-auto">Simpan</button>
-                        </div>
-                    </form>
+                            <div class="input-group-prepend">
+                                <button type="submit" class="btn btn-outline-primary btn-pill mr-0 ml-auto">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
+            <div class="col-lg-4 col-md-4"></div>
         </div>
-        <div class="col-lg-4 col-md-4"></div>
-    </div>
-        @endif
+    @endif
 
     @elseif (@$data != null)
         @if (@$check == true)
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="card my-3">
-                <div class="card-body">
-                    <div class="form-horizontal">
-                        <div class="form-group">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card my-3">
+                    <div class="card-header">
+                        <form action="{{route('hasil.create')}}" method="POST">
+                            {{ csrf_field() }}
+                            <div class="input-fields-wrap">
+                                <div class="form-group">
+                                    <div class="input-group-prepend">
+                                        <h4 class="m-0">Tambah Pembagian Hasil</h4>
+                                        <button class="btn btn-outline-primary btn-pill add-field-button mr-0 ml-auto"><i class="fa fa-plus"></i></button>
+                                    </div>
+                                </div>
+                                <div class="form-horizontal">
+                                    <div class="row">
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="label-control">Peruntukan</label>
+                                            <input class="form-control" type="text" name="untuk[]" required />
+                                        </div>
+                                        <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                            <label class="label-control">Persentase</label>
+                                            <div class="input-group with-addon-icon-left">
+                                                <input class="form-control" type="number" name="persen[]" required />
+                                                <span class="input-group-append">
+                                                    <span class="input-group-text"><i class="fa fa-percentage"></i></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="input-group-prepend">
-                                <h4 class="m-0"></h4>
-                                {{-- <button class="btn btn-outline-warning btn-pill mr-0 ml-auto" data-toggle="modal"
-                                    data-target="#modalEdit{{@$data['id']}}">Ubah</button> --}}
+                                <button type="submit" class="btn btn-outline-primary btn-pill mr-0 ml-auto">Simpan</button>
                             </div>
-                        </div>
-                        
-                        <table width="100%" class="table table-striped table-hover table-sm" id="dataTables">
-                            <thead class="text-center">
-                                <tr>
-                                    <td>No.</td>
-                                    <td>Peruntukkan</td>
-                                    <td>Presentase</td>
-                                    {{-- <td>Opsi</td> --}}
-                                </tr>
-                            </thead>
-                            <tbody class="text-center">
-                                @php $n = 1; @endphp
-                                @foreach ($data as $data)
-                                <tr>
-                                    <td>{{$n}}</td>
-                                    <td>{{@$data['untuk']}}</td>
-                                    <td>{{@$data['persen']}}%</td>
-                                    {{-- <td><a href="#id-hasil={{@$data['id']}}" class="btn btn-sm btn-pill btn-outline-warning"><i
-                                                class="fa fa-edit"></i></a>
-                                    </td> --}}
-                                </tr>
-                                @php $n++; @endphp
-                                @endforeach
-                            </tbody>
-                            <tfoot class="text-center">
-                                <tr>
-                                    <td>No.</td>
-                                    <td>Peruntukkan</td>
-                                    <td>Presentase</td>
-                                    {{-- <td>Opsi</td> --}}
-                                </tr>
-                            </tfoot>
-                        </table>
-
+                        </form>
                     </div>
-                    <div class="modal fade" id="modalEdit{{@$data['id']}}" role="dialog">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form action="route('bumdes.update', $data['bumdes']['id'])" method="POST">
-                                    {{ csrf_field() }}
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Ubah Data BUMDes</h5>
-                                    </div>
-                                    <div class="modal-body">
-                                        
-                                    </div>
-                                    
-                                </form>
-                            </div>
+                    <div class="card-body">
+                        <div class="form-horizontal">                        
+                            <table width="100%" class="table table-striped table-hover table-sm" id="dataTables">
+                                <thead class="text-center">
+                                    <tr>
+                                        <td>Peruntukkan</td>
+                                        <td>Presentase</td>
+                                        <td>Opsi</td>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    @foreach ($data as $data)
+                                    <tr>
+                                        <td>{{@$data['untuk']}}</td>
+                                        <td>{{@$data['persen']}}%</td>
+                                        <td>
+                                            <button class="btn btn-outline-warning btn-pill" data-toggle="modal" data-target="#modalEdit{{@$data['id']}}"><i class="fa fa-edit"></i></button>
+                                            <button class="btn btn-outline-danger btn-pill" data-toggle="modal" data-target="#modalDelete{{@$data['id']}}"><i class="fa fa-minus"></i></button>
+                                        </td>
+                                        <div class="modal fade" id="modalEdit{{@$data['id']}}" role="dialog">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form action="{{route('hasil.update', $data['id'])}}" method="POST">
+                                                        {{ csrf_field() }}
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Ubah Data Pembagian Hasil</h5>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="form-horizontal">
+                                                                <div class="row">
+                                                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                                        <label class="label-control">Peruntukan</label>
+                                                                        <input class="form-control" type="text" name="untuk" value="{{@$data['untuk']}}" />
+                                                                    </div>
+                                                                    <div class="form-group col-lg-6 col-md-6 col-sm-12">
+                                                                        <label class="label-control">Persentase</label>
+                                                                        <div class="input-group with-addon-icon-left">
+                                                                            <input class="form-control" type="number" name="persen" value="{{@$data['persen']}}" />
+                                                                            <span class="input-group-append">
+                                                                                <span class="input-group-text"><i class="fa fa-percentage"></i></span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer bg-whitesmoke br">
+                                                            <div style="display:none">
+                                                                <input type="number" name="id" value="{{@$data['id']}}">
+                                                                <input type="number" name="id_bumdes" value="{{@$data['id_bumdes']}}">
+                                                            </div>
+                                                            <button class="btn btn-outline-danger btn-pill"
+                                                                data-dismiss="modal">Tutup</button>
+                                                            <button type="submit" class="btn btn-outline-success btn-pill">Simpan</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal fade" id="modalDelete{{@$data['id']}}" role="dialog">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <form action="{{route('hasil.delete', $data['id'])}}" method="POST">
+                                                        {{ csrf_field() }}
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Hapus Data Pembagian Hasil</h5>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Apakah anda yakin ingin menghapus {{@$data['untuk']}}?
+                                                        </div>
+                                                        <div class="modal-footer bg-whitesmoke br">
+                                                            <div style="display:none">
+                                                                <input type="number" name="id" value="{{@$data['id']}}">
+                                                            </div>
+                                                            <button class="btn btn-outline-danger btn-pill" data-dismiss="modal">Tidak</button>
+                                                            <button type="submit" class="btn btn-outline-success btn-pill">Iya</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                                <tfoot class="text-center">
+                                    <tr>
+                                        <td>Peruntukkan</td>
+                                        <td>Presentase</td>
+                                        <td>Opsi</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
         @endif
     @endif
 </div>

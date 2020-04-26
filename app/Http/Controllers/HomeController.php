@@ -32,8 +32,6 @@ class HomeController extends Controller
 
     public function index()
     {
-        // $datas['bumdes'] = Bumdes::getByUser();
-        // $datas['jual'] = Jual::getByUser()->count();
         $datas['pengurus'] = Pengurus::getByBumdes();
         $datas['unit'] = Unit::getByUser();
         $datas['sumModal'] = Modal::sumModal();
@@ -176,6 +174,34 @@ class HomeController extends Controller
         return redirect()->back()->with('success', 'Unit Usaha berhasil disimpan');
     }
 
+    public function unitUpdate(Request $request)
+    {
+        $update = Unit::find($request->id);
+        $update->id = $request->id;
+        $update->id_bumdes = $request->id_bumdes;
+        $update->nama = $request->nama;
+        $update->jenis = $request->jenis;
+        $update->omset = $request->omset;
+        $update->updated_at = now();
+        $update->save();
+        return redirect()->back()->with('success', 'Unit Usaha berhasil diperbarui');
+    }
+
+    public function unitDelete(Request $request)
+    {
+        $delete = Unit::find($request->id);
+        $jual = Jual::where('id_unit', $request->id)->get();
+        if ($jual->count() == 0) {
+            $delete->delete();
+        } elseif ($jual->count() != 0) {
+            foreach ($jual as $jual) {
+                $jual->delete();
+            }
+            $delete->delete();
+        }
+        return redirect()->back()->with('success', 'Unit dan Penjualan terkait berhasil dihapsus');
+    }
+
     public function modalView()
     {
         $check = Modal::checkModal();
@@ -208,6 +234,26 @@ class HomeController extends Controller
         return redirect()->back()->with('success', 'Permodalan anda berhasil disimpan');
     }
 
+    public function modalUpdate(Request $request)
+    {
+        $update = Modal::find($request->id);
+        $update->id = $request->id;
+        $update->id_bumdes = $request->id_bumdes;
+        $update->sumber = $request->sumber;
+        $update->jumlah = $request->jumlah;
+        $update->tahun = $request->tahun;
+        $update->updated_at = now();
+        $update->save();
+        return redirect()->back()->with('success', 'Permodalan anda berhasil diperbarui');
+    }
+
+    public function modalDelete(Request $request)
+    {
+        $delete = Modal::find($request->id);
+        $delete->delete();
+        return redirect()->back()->with('success', 'Permodalan anda berhasil dihapus');
+    }
+
     public function hasilView()
     {
         $check = Hasil::checkHasil();
@@ -238,6 +284,25 @@ class HomeController extends Controller
         return redirect()->back()->with('success', 'Pembagian Hasil anda berhasil disimpan');
     }
 
+    public function hasilUpdate(Request $request)
+    {
+        $update = Hasil::find($request->id);
+        $update->id = $request->id;
+        $update->id_bumdes = $request->id_bumdes;
+        $update->untuk = $request->untuk;
+        $update->persen = $request->persen;
+        $update->updated_at = now();
+        $update->save();
+        return redirect()->back()->with('success', 'Pembagian Hasil anda berhasil diperbarui');
+    }
+
+    public function hasilDelete(Request $request)
+    {
+        $delete = Hasil::find($request->id);
+        $delete->delete();
+        return redirect()->back()->with('success', 'Pembagian Hasil anda berhasil dihapus');
+    }
+
     public function jualView()
     {
         $check = Jual::checkJual();
@@ -257,7 +322,6 @@ class HomeController extends Controller
     public function jualCreate(Request $request)
     {
         $this->validate($request, [
-            'file' => 'required',
             'file' => 'max:2048'
         ]);
         $file = $request->file('file');
@@ -268,13 +332,26 @@ class HomeController extends Controller
             $jual = new Jual;
             $jual->id_unit = $request->id_unit[$i - 1];
             $jual->produk = $request->produk[$i - 1];
-            $jual->foto = $request->id_unit[$i - 1] . "-" . $file[$i - 1]->getClientOriginalName();
+
+            if ($file[$i - 1] == null) {
+                $jual->foto = null;
+            } elseif ($file[$i - 1] != null) {
+                $jual->foto = $request->id_unit[$i - 1] . "-" . $file[$i - 1]->getClientOriginalName();
+                $file[$i - 1]->move($folder_upload, $request->id_unit[$i - 1] . "-" . $file[$i - 1]->getClientOriginalName());
+            }
+            
             $jual->harga = $request->harga[$i - 1];
+
+            if ($request->deskripsi[$i - 1] == null) {
+                $jual->deskripsi = null;
+            } elseif ($request->harga[$i - 1] != null) {
+                $jual->deskripsi = $request->deskripsi[$i - 1];
+            }
+
             $jual->lokasi = $request->lokasi[$i - 1];
             $jual->telp = $request->telp[$i - 1];
             $jual->created_at = now();
             $jual->updated_at = now();
-            $file[$i - 1]->move($folder_upload, $request->id_unit[$i - 1] . "-" . $file[$i - 1]->getClientOriginalName());
             $jual->save();
         }
         return redirect()->back()->with('success', 'Data Penjualan anda berhasil disimpan');
@@ -283,22 +360,34 @@ class HomeController extends Controller
     public function jualUpdate(Request $request)
     {
         $this->validate($request, [
-            'file' => 'required',
             'file' => 'max:2048'
         ]);
 
         $file = $request->file('file');
-        $folder_upload = 'images/jual';
-        $file->move($folder_upload, $request->id_unit . "-" . $file->getClientOriginalName());
+        if ($file != null) {
+            $folder_upload = 'images/jual';
+            $file->move($folder_upload, $request->id_unit . "-" . $file->getClientOriginalName());
+        }
 
         $update = Jual::find($request->id);
         $update->produk = $request->produk;
-        $update->foto = $request->id_unit . "-" . $file->getClientOriginalName();
+        if ($file != null) {
+            $update->foto = $request->id_unit . "-" . $file->getClientOriginalName();
+        } elseif ($file == null) {
+            $update->foto = $update->foto;
+        }
         $update->harga = $request->harga;
         $update->lokasi = $request->lokasi;
         $update->telp = $request->telp;
         $update->updated_at = now();
         $update->save();
         return redirect()->back()->with('success', 'Data Penjualan berhasil diperbarui');
+    }
+
+    public function jualDelete(Request $request)
+    {
+        $jual = Jual::find($request->id);
+        $jual->delete();
+        return redirect()->back()->with('success', 'Penjualan berhasil dihapus');
     }
 }

@@ -55,7 +55,7 @@
         @foreach ($datas as $agribisnis)
         <div class="col-lg-6 col-md-6 col-sm-12 my-3">
             <div class="card card-small card-post card-post--aside card-post--1">
-                <div class="card-post__image" style="background-image: url('{{asset('images/jual/'.@$agribisnis->foto)}}');">
+                <div class="card-post__image" @if ($agribisnis->foto != null) style="background-image: url('{{asset('images/jual/'.@$agribisnis->foto)}}');" @else style="background-image: url('{{asset('images/default.png')}}" @endif>
                     <a href="" class="card-post__category badge badge-pill badge-dark">Agribisnis</a>
                 </div>
                 <div class="card-body">
@@ -64,12 +64,24 @@
                     </h5>
                     <table class="table-hover table-condensed">
                         <tr>
+                            <td>BUMDes</td>
+                            @foreach ($bumdes as $data)
+                                @if ($data->id == $agribisnis->id_bumdes)
+                                    <td>: {{$data->nama}}</td>
+                                @endif
+                            @endforeach
+                        </tr>
+                        <tr>
                             <td>Lokasi</td>
                             <td>: {{$agribisnis->lokasi}}</td>
                         </tr>
                         <tr>
                             <td>Harga</td>
                             <td>: {{$agribisnis->harga}}</td>
+                        </tr>
+                        <tr>
+                            <td>Deskripsi</td>
+                            <td>: {{$agribisnis->deskripsi}}</td>
                         </tr>
                         <tr>
                             <td>Kontak</td>

@@ -71,7 +71,7 @@
                                             </div>
                                             <div class="form-group col-lg col-md col-sm-12">
                                                 <label class="label-control">Foto</label>
-                                                <input class="form-control" type="file" name="file[]" required />
+                                                <input class="form-control" type="file" name="file[]" />
                                                 <div class="invalid-feedback" style="display: flex">Maksimal Ukuran 2MB</div>
                                             </div>
                                         </div>
@@ -87,6 +87,10 @@
                                             <div class="form-group col-lg col-md col-sm-12">
                                                 <label class="label-control">Telp</label>
                                                 <input class="form-control" type="text" name="telp[]" required />
+                                            </div>
+                                            <div class="form-group col-lg col-md col-sm-12">
+                                                <label class="label-control">Deskripsi</label>
+                                                <input class="form-control" type="text" name="deskripsi[]" />
                                             </div>
                                             <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
                                         </div>
@@ -132,7 +136,7 @@
                                     </div>
                                     <div class="form-group col-lg col-md col-sm-12">
                                         <label class="label-control">Foto</label>
-                                        <input class="form-control" type="file" name="file[]" required />
+                                        <input class="form-control" type="file" name="file[]" />
                                         <div class="invalid-feedback" style="display: flex">Maksimal Ukuran 2MB</div>
                                     </div>
                                 </div>
@@ -148,6 +152,10 @@
                                     <div class="form-group col-lg col-md col-sm-12">
                                         <label class="label-control">Telp</label>
                                         <input class="form-control" type="text" name="telp[]" required />
+                                    </div>
+                                    <div class="form-group col-lg col-md col-sm-12">
+                                        <label class="label-control">Deskripsi</label>
+                                        <input class="form-control" type="text" name="deskripsi[]" />
                                     </div>
                                     <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
                                 </div>
@@ -174,6 +182,8 @@
                                         <h4 class="m-0">List</h4>
                                         <button class="btn btn-outline-primary btn-pill mr-0 ml-auto" data-toggle="modal"
                                             data-target="#modalEdit{{@$jual->id}}">Ubah</button>
+                                        <button class="btn btn-outline-danger btn-pill mr-0 ml-1" data-toggle="modal"
+                                            data-target="#modalHapus{{@$jual->id}}">Hapus</button>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -194,6 +204,12 @@
                                         alt="{{@$jual->produk}}" width="150rem"/>
                                     @endif
                                 </div>
+                                @if (@$jual->deskripsi != null)
+                                <div class="form-group">
+                                    <label class="label-control">Deskripsi</label>
+                                    <div class="form-control disabled">{{@$jual->deskripsi}}</div>
+                                </div>
+                                @endif
                                 <div class="form-group">
                                     <label class="label-control">Harga</label>
                                     <div class="form-control disabled">Rp. {{@$jual->harga}}</div>
@@ -261,6 +277,29 @@
                                                 </div>
                                                 <button class="btn btn-outline-danger btn-pill" data-dismiss="modal">Tutup</button>
                                                 <button type="submit" class="btn btn-outline-success btn-pill">Simpan</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="modalHapus{{@$jual->id}}" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <form action="{{route('jual.delete', @$jual->id)}}" method="POST">
+                                            {{ csrf_field() }}
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Hapus Data Penjualan</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah anda yakin ingin menghapus {{@$jual->produk}}?
+                                            </div>
+                                            <div class="modal-footer bg-whitesmoke br">
+                                                <div style="display:none">
+                                                    <input type="number" name="id" value="{{@$jual->id}}">
+                                                </div>
+                                                <button class="btn btn-outline-danger btn-pill"
+                                                    data-dismiss="modal">Tidak</button>
+                                                <button type="submit" class="btn btn-outline-success btn-pill">Iya</button>
                                             </div>
                                         </form>
                                     </div>
