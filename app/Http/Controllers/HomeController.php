@@ -376,6 +376,7 @@ class HomeController extends Controller
         } elseif ($file == null) {
             $update->foto = $update->foto;
         }
+        $update->deskripsi = $request->deskripsi;
         $update->harga = $request->harga;
         $update->lokasi = $request->lokasi;
         $update->telp = $request->telp;

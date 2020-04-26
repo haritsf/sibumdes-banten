@@ -204,12 +204,10 @@
                                         alt="{{@$jual->produk}}" width="150rem"/>
                                     @endif
                                 </div>
-                                @if (@$jual->deskripsi != null)
                                 <div class="form-group">
                                     <label class="label-control">Deskripsi</label>
                                     <div class="form-control disabled">{{@$jual->deskripsi}}</div>
                                 </div>
-                                @endif
                                 <div class="form-group">
                                     <label class="label-control">Harga</label>
                                     <div class="form-control disabled">Rp. {{@$jual->harga}}</div>
@@ -252,6 +250,11 @@
                                                         @endif
                                                         <input class="form-control" type="file" name="file" />
                                                         <div class="invalid-feedback" style="display: flex">Maksimal Ukuran 2MB</div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="label-control">Deskripsi</label>
+                                                        <input class="form-control" type="text" name="deskripsi"
+                                                            value="{{@$jual->deskripsi}}">
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="label-control">Harga</label>
