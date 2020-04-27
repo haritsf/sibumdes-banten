@@ -62,7 +62,7 @@
           <div class="col-lg-4 col-md-6 col-sm-12">
             <h6 class="text-secondary mb-0"><b>Bantuan</b></h6>
             <ul class="list-unstyled">
-              <li><a href="#" class="text-secondary">Cara Mendaftar</a></li>
+              <li><a href="{{asset('files/cara-penggunaan.pdf')}}" target="_blank" class="text-secondary">Cara Mendaftar</a></li>
               <li><a href="#" class="text-secondary">Cara Mengupdate Data</a></li>
             </ul>
           </div>
