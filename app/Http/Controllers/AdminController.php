@@ -11,6 +11,7 @@ use App\Modal;
 use App\Pengurus;
 use App\Unit;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -245,5 +246,14 @@ class AdminController extends Controller
             }
         }
         return redirect()->back()->with('danger', 'User dan Data terkait berhasil dihapus');
+    }
+
+    public function userUpdate(Request $request)
+    {
+        // dd($request);
+        $update = User::find($request->id);
+        $update->password = Hash::make($request->password);
+        $update->save();
+        return redirect()->back()->with('success', 'Password User berhasil diperbarui');
     }
 }

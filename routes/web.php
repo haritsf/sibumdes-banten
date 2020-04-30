@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/penjualan', 'AdminController@jualView')->name('admin.jual.view');
         Route::get('/user', 'AdminController@userView')->name('admin.user.view');
         Route::post('/user/{id}/delete', 'AdminController@userDelete')->name('admin.user.delete');
+        Route::post('/user/{id}/update', 'AdminController@userUpdate')->name('admin.user.update');
     });
 
     Route::group(['prefix' => 'dashboard', 'namespace' => '\App\Http\Controllers', 'middleware' => 'user'], function () {
@@ -64,6 +65,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/penjualan/create', 'HomeController@jualCreate')->name('jual.create');
         Route::post('/penjualan/{id}/update', 'HomeController@jualUpdate')->name('jual.update');
         Route::post('/penjualan/{id}/delete', 'HomeController@jualDelete')->name('jual.delete');
+
+        Route::post('/profile/{id}/update', 'HomeController@profileUpdate')->name('profile.update');
     });
 });
 

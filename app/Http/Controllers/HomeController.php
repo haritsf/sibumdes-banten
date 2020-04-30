@@ -11,6 +11,7 @@ use App\Modal;
 use App\Pengurus;
 use App\Unit;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -43,6 +44,14 @@ class HomeController extends Controller
     {
         $data = User::getByAuth();
         return view('user.profile', ['data' => $data]);
+    }
+
+    public function profileUpdate(Request $request)
+    {
+        $update = User::find($request->id);
+        $update->password = Hash::make($request->password);
+        $update->save();
+        return redirect(route('home'))->with('success', 'Password anda berhasil diperbarui');
     }
 
     public function bumdesView()

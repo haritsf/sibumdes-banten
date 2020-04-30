@@ -32,45 +32,50 @@
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="card my-3">
                 <div class="card-body">
-                    <div class="form-horizontal">
-                        <div class="form-group col-lg-12 col-md-12 col-sm-12 pl-0">
-                            <div class="input-group-prepend">
-                                <h4 class="m-0">Data</h4>
-                                {{-- <button class="btn btn-outline-warning btn-pill mr-0 ml-auto" data-toggle="modal"
-                                    data-target="#modalEdit{{$data['bumdes']->id}}">Ubah</button> --}}
+                    <form action="{{route('profile.update', @$data['id'])}}" method="POST">
+                        {{ csrf_field() }}
+                        <div class="form-horizontal">
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 pl-0">
+                                <div class="input-group-prepend">
+                                    <h4 class="m-0">Data</h4>
+                                    <button type="submit" class="btn btn-primary btn-pill mr-0 ml-auto">Simpan</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-lg-4 col-md-4 col-sm-12">
+                                    <label class="label-control">Username</label>
+                                    <input class="form-control" disabled type="text" value="{{$data['username']}}" />
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-12">
+                                    <label class="label-control">Password Baru</label>
+                                    <input class="form-control" name="password" type="password" required />
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-12">
+                                    <label class="label-control">Email</label>
+                                    <input class="form-control" disabled type="text" value="{{$data['email']}}" />
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-12">
+                                    <label class="label-control">Nama BUMDes</label>
+                                    <input class="form-control" disabled type="text" value="{{$data['name']}}" />
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-12">
+                                    <label class="label-control">Tanggal Verified</label>
+                                    <input class="form-control" disabled type="datetime" value="{{$data['username_verified_at']}}" />
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-12">
+                                    <label class="label-control">Tanggal Pendaftaran</label>
+                                    <input class="form-control" disabled type="datetime" value="{{$data['created_at']}}" />
+                                </div>
+                                <div class="form-group col-lg-4 col-md-4 col-sm-12">
+                                    <label class="label-control">Terakhir Di Update</label>
+                                    <input class="form-control" disabled type="datetime" value="{{$data['updated_at']}}" />
+                                </div>
+                                <div style="display:none">
+                                    <input type="number" name="id" value="{{$data['id']}}" required />
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="form-group col-lg-4 col-md-4 col-sm-12">
-                                <label class="label-control">Username</label>
-                                <input class="form-control" disabled type="text" value="{{$data['username']}}" />
-                            </div>
-                            <div class="form-group col-lg-4 col-md-4 col-sm-12">
-                                <label class="label-control">Password</label>
-                                <input class="form-control" disabled type="password" value="{{$data['password']}}" />
-                            </div>
-                            <div class="form-group col-lg-4 col-md-4 col-sm-12">
-                                <label class="label-control">Email</label>
-                                <input class="form-control" disabled type="text" value="{{$data['email']}}" />
-                            </div>
-                            <div class="form-group col-lg-4 col-md-4 col-sm-12">
-                                <label class="label-control">Nama BUMDes</label>
-                                <input class="form-control" disabled type="text" value="{{$data['name']}}" />
-                            </div>
-                            <div class="form-group col-lg-4 col-md-4 col-sm-12">
-                                <label class="label-control">Tanggal Verified</label>
-                                <input class="form-control" disabled type="datetime" value="{{$data['username_verified_at']}}" />
-                            </div>
-                            <div class="form-group col-lg-4 col-md-4 col-sm-12">
-                                <label class="label-control">Tanggal Pendaftaran</label>
-                                <input class="form-control" disabled type="datetime" value="{{$data['created_at']}}" />
-                            </div>
-                            <div class="form-group col-lg-4 col-md-4 col-sm-12">
-                                <label class="label-control">Terakhir Di Update</label>
-                                <input class="form-control" disabled type="datetime" value="{{$data['updated_at']}}" />
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -46,7 +46,7 @@
   @yield('content')
 
   <!-- Footer Section -->
-  <footer class="main-footer py-3 bg-dark">
+  <footer class="main-footer py-3 bg-dark" @if (Route::is('landing'))  @else style="width: 100%; position: fixed; left: 0; bottom: 0;" @endif>
     <div class="container pl-0 pr-0">
       <div class="col-lg-12 col-md-12 col-sm-12 ml-auto mr-auto text-left">
         <h4 class="text-light mt-3"><b>SIBUMDES</b></h4>

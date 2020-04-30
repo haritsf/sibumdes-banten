@@ -17,6 +17,21 @@
     </div>
     {{-- @endif --}}
 
+    @if ($message = Session::get('success'))
+    <div class="alert alert-info alert-dismissible fade show alert-has-icon mt-3" role="alert">
+        <div class="alert-icon">
+            <i class="far fa-check-circle"></i>
+        </div>
+        <div class="alert-body">
+            <div class="alert-title" style="font-weight:normal">Sukses</div>
+            {{$message}}
+        </div>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+
     <!-- Page Header -->
     <div class="page-header row no-gutters py-4">
         <div class="col-12 col-sm-4 text-center text-sm-left mb-0">

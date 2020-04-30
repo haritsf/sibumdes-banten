@@ -58,7 +58,7 @@
         </div>
     </nav>
 
-    <main class="py-4 vh-100">
+    <main class="py-4">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
