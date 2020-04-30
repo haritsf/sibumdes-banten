@@ -41,7 +41,7 @@
     </nav>
 </div>
 
-<div class="testimonials section">
+<div class="testimonials section pb-5">
     <div class="container">
         <div class="page-header row no-gutters py-4">
             <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
